@@ -12,3 +12,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+def splitString(string):
+    """tranform string in array of characters"""
