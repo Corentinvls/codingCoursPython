@@ -69,3 +69,6 @@ Interdiction d'utiliser: 'import base64'
 
 Ecrire la partie script permettant de dÃ©coder le Base 64 vers l'ASCII
 En rÃ©utilisant une partie des fonctions dÃ©jÃ  implÃ©mentÃ©es.
+
+['011101', '000110', '010101', '110011', '011101', '00']
+['011101', '000110', '010101', '0110011', '011101', '00']

@@ -61,36 +61,48 @@ def base_64_to_ascii(string):
     print("tu a donner " + string)
 
     string = remove_useless_char(string, "=")
-    print('1/ ')
+    print('11/ ok')
     print(string)
 
     base_64_array = string_to_array(string)
-    print('2/ ')
+    print('10/ ok')
     print(base_64_array)
     decimal_array = array_base_64_to_decimal(base_64_array)
-    bin_array = decimal_to_binary(decimal_array)
+    print('9/ ok')
+    print(decimal_array)
 
+    bin_array = decimal_to_binary(decimal_array)
     for i in range(len(bin_array)):
-        bin_array[i] = remove_useless_char(bin_array[i], "b")
+        bin_array[i] = "".join(bin_array[i][2:])
+    print('8/  ok')
+    print(bin_array)
+
     bin_array = append_to_start(bin_array, 6, "0")
-    print('3/ ')
+    print('7/  ok')
     print(bin_array)
 
     binary = array_to_string(bin_array)
-    print('4/ ')
+    print('6/ ok')
     print(binary)
 
     byte = split_string_at_size(binary, 8)
-    if len(byte[-1]): byte.pop(-1)
-    print('5/ ')
+    print('5/ ok')
     print(byte)
 
+    print('4/ ok')
+    print(byte)
     ascci = convert_binary_to_decimal(byte)
-    for i in range(len(ascci)):
-        ascci[i] = convert_ascii_to_char(ascci[i])
-    ascci = array_to_string(ascci)
-    print('6/ ')
+    print('3/ ok')
     print(ascci)
+
+    for i in range(len(ascci)):
+        ascci[i] = convert_ascii_to_char(int(ascci[i]))
+    print('2/ ok')
+    print(ascci)
+    ascci = array_to_string(ascci)
+
+    print('1/ ok')
+    print("result : "+ascci)
 
     return ascci
 
@@ -191,10 +203,6 @@ def convert_ascii_to_binary(array):
         array[i] = "".join(binary[2:])
     return array
 
-
-numbers_table = [16, 20, 9, 3, 17, 4, 20]
-
-
 def sorting(array):
     """exo bonus"""
     for i in range(1, len(array)):
@@ -241,6 +249,6 @@ def remove_useless_char(string, char):
 # input_user = input("Donnez une chaine de caractere : ")
 # ascii_to_base_64(input_user)
 
-ascii_to_base_64("ABCDE")
+ascii_to_base_64("abcdEFGHiJkLm")
 print('\n\n')
-base_64_to_ascii("QUJDREU=")
+base_64_to_ascii("YWJjZEVGR0hpSmtMbQ==")
