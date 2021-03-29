@@ -1,0 +1,71 @@
+L'encodage Base 64 : UtilisÃ© notamment pour encoder le URLs
+
+Egalement utilisÃ© pour joindre des fichiers aux emails.
+
+Encodage standard de l'information est le code ASCII (7 ou bits)
+
+Le code Base 64 n'utilise que 64 caractÃ¨res alors que l'ASCII utilise une table
+de 128 caractÃ¨res (ASCII 7 Bits) ou 256 caractÃ¨res (ASCII 8 bits)
+
+Etapes dÃ©taillÃ©es :
+
+Chaque Ã©tape fera l'objet de la crÃ©ation d'une fonction (DocumentÃ©e et commentÃ©e).
+
+On part d'une chaine de caractÃ¨res (par exemple) : 'ABCDE'
+
+1) Transformer la chaine de caractÃ¨res en liste
+
+['A','B','C','D','E']
+
+2) Transformer chaque Ã©lÃ©ment de la liste dans son code ASCII
+
+[65,66,67,68,69]
+
+3) Transformer chaque Ã©lÃ©ment de la liste dans sa reprÃ©sentation binaire
+
+['1000001','1000010','1000011','1000100','1000101']
+
+4) Cadrer tous les Ã©lÃ©ments de la liste Ã  droite sur 8 positions (ajouter les
+zÃ©ros Ã  gauche)
+
+['01000001','01000010','01000011','01000100','01000101']
+
+5) CrÃ©er une chaine de caractÃ¨re Ã  partir de la liste
+
+'0100000101000010010000110100010001000101'
+
+6) DÃ©couper la chaine en blocs de 6 caractÃ¨res et en faire une nouvelle liste
+
+['010000','010100','001001','000011','010001','000100','0101']
+
+7) Cadrer le dernier bloc sur 6 caractÃ¨res (ajouter des zÃ©ros Ã  droite)
+
+['010000','010100','001001','000011','010001','000100','010100']
+
+8) Transormer chaque Ã©lÃ©ment en reprÃ©sentation dÃ©cimale
+
+[16,20,9,3,17,4,20]
+
+9) Transformer chaque Ã©lÃ©ment dans son caractÃ¨re dans la table Base 64
+
+['Q','U','J','D','R','E','U']
+
+10 ) Transformer la liste en chaine de caractÃ¨res
+
+'QUJDREU'
+
+11) La chaine de caractÃ¨res doit avoir un longeur multiple de 4. Ajouter
+Ã©ventuellemnt des signes '=' Ã  droite pour obtenir une longeur multiple
+de 4
+
+'QUJDREU='
+
+Exercice: Ecrire le script avec chaque Ã©tape dans une fonction.
+
+Demander Ã  l'utilisateur du script d'entrer une chaine quelconque et
+afficher le rÃ©sultat de l'encodage.
+
+Interdiction d'utiliser: 'import base64'
+
+Ecrire la partie script permettant de dÃ©coder le Base 64 vers l'ASCII
+En rÃ©utilisant une partie des fonctions dÃ©jÃ  implÃ©mentÃ©es.
