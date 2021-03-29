@@ -73,6 +73,7 @@ numbers_table = ['010000','010100','001001','000011','010001','000100','010100']
 
 def convertBinaryToDecimal(numbers_table):
     """exo8  """
+    decimale_table = []
     for binary in numbers_table:
         int_val, i, n = 0, 0, 0
         while (binary != 0):
@@ -80,7 +81,8 @@ def convertBinaryToDecimal(numbers_table):
             int_val = int_val + a * pow(2, i)
             binary = int(binary) // 10
             i += 1
-        print(int_val)
+        decimale_table.append(int_val)
+    return decimale_table
 
 if __name__ == '__main__':
     convertBinaryToDecimal(numbers_table)
