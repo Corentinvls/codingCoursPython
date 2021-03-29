@@ -63,14 +63,13 @@ def base_64_to_ascii(string):
     base_64_array = string_to_array(string)
     decimal_array=array_base_64_to_decimal(base_64_array)
     print(decimal_array)
-    #on convertie en tableau de binaire
-    #on convertie en string
-    #~on découpe en block de 8
-    #~on rempli le dernier par la gauche avec des zeo jusqua ce qu'il fasse 0 ref la ligne d'en dessous
-    #~append_to_start(array, 8, "0"):
-    #ensuite on converti en ascii
-    #et on converti en char
-    #puis on converti ce tableau en string
+    #on convertie en tableau de binaire// ?
+    #on convertie en string // array_to_string(array):
+    #~on découpe en block de 8 // split_string_at_size(string, 8):
+    #~on rempli le dernier par la gauche avec des zeo jusqua ce qu'il fasse 0 ref la ligne d'en dessous//append_to_start(array, 8, "0"):
+    #ensuite on converti en ascii // ?
+    #et on converti en char // ?
+    #puis on converti ce tableau en string // array_to_string(array):
     #on return
 
 
@@ -148,7 +147,6 @@ def array_base_64_to_decimal(arr):
                      'u': '46', 'v': '47', 'w': '48', 'x': '49',
                      'y': '50', 'z': '51', '+': '62', '/': '63'
                      }
-
     for i in range(len(arr)):
         arr[i] = convert_table.get(str(arr[i]))
     return arr
