@@ -5,7 +5,7 @@ Python Docstring
 
 
 def ascii_to_base_64(string):
-    """Convert String to base 64
+    """Convert ascii to base 64
     """
     print("tu a donner " + string)
 
@@ -53,6 +53,26 @@ def ascii_to_base_64(string):
     print("11/ ")
     print(result)
     return result
+
+
+def base_64_to_ascii(string):
+    """Convert base64 to ascii
+    """
+    print("tu a donner " + string)
+    string = remove_useless_char(string, "=")
+    base_64_array = string_to_array(string)
+    decimal_array=array_base_64_to_decimal(base_64_array)
+    print(decimal_array)
+    #on convertie en tableau de binaire
+    #on convertie en string
+    #~on découpe en block de 8
+    #~on rempli le dernier par la gauche avec des zeo jusqua ce qu'il fasse 0 ref la ligne d'en dessous
+    #~append_to_start(array, 8, "0"):
+    #ensuite on converti en ascii
+    #et on converti en char
+    #puis on converti ce tableau en string
+    #on return
+
 
 
 def string_to_array(string):
@@ -109,6 +129,31 @@ def decimal_array_to_64(arr):
     return arr
 
 
+def array_base_64_to_decimal(arr):
+    """exo9  convert base64 To decimal"""
+    convert_table = {'0': '52', '1': '53', '2': '54', '3': '55',
+                     '4': '56', '5': '57', '6': '58', '7': '59',
+                     '8': '60', '9': '61', 'A': '0', 'B': '1',
+                     'C': '2', 'D': '3', 'E': '4', 'F': '5',
+                     'G': '6', 'H': '7', 'I': '8', 'J': '9',
+                     'K': '10', 'L': '11', 'M': '12', 'N': '13',
+                     'O': '14', 'P': '15', 'Q': '16', 'R': '17',
+                     'S': '18', 'T': '19', 'U': '20', 'V': '21',
+                     'W': '22', 'X': '23', 'Y': '24', 'Z': '25',
+                     'a': '26', 'b': '27', 'c': '28', 'd': '29',
+                     'e': '30', 'f': '31', 'g': '32', 'h': '33',
+                     'i': '34', 'j': '35', 'k': '36', 'l': '37',
+                     'm': '38', 'n': '39', 'o': '40', 'p': '41',
+                     'q': '42', 'r': '43', 's': '44', 't': '45',
+                     'u': '46', 'v': '47', 'w': '48', 'x': '49',
+                     'y': '50', 'z': '51', '+': '62', '/': '63'
+                     }
+
+    for i in range(len(arr)):
+        arr[i] = convert_table.get(str(arr[i]))
+    return arr
+
+
 binary_table = ['1000001', '1000010', '1000011', '1000100', '1000101']
 
 
@@ -160,9 +205,12 @@ def split_string_at_size(string, size):
     """exo6 split string at size"""
     return [string[i:i + size] for i in range(0, len(string), size)]
 
-def remove_useless_char(string, char):
-    """exo6 split string at size"""
-    return [string[i:i + size] for i in range(0, len(string), size)]
 
-input_user = input("Donnez une chaine de caractere : ")
-convert_base_64(input_user)
+def remove_useless_char(string, char):
+    """exo11 delete char from string"""
+    return string.replace(char, "")
+
+
+# input_user = input("Donnez une chaine de caractere : ")
+# ascii_to_base_64(input_user)
+base_64_to_ascii("QUJDREU=")
