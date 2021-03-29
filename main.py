@@ -4,53 +4,53 @@ Python Docstring
 """
 
 
-def convert_base_64(inputUser):
+def convert_base_64(input_user):
     """The main
     """
 
-    print("tu a donner " + inputUser)
+    print("tu a donner " + input_user)
 
-    inputInArray = string_to_array(inputUser)
+    input_in_array = string_to_array(input_user)
     print("1/ ")
-    print(inputInArray)
+    print(input_in_array)
 
-    inputInASCII = convertToASCII(inputInArray)
+    input_in_ascii = convert_to_ascii(input_in_array)
     print("2/ ")
-    print(inputInASCII)
+    print(input_in_ascii)
 
-    inputInBinary = convertASCIItoBinary(inputInASCII)
+    input_in_binary = convert_ascii_to_binary(input_in_ascii)
     print("3/ ")
-    print(inputInBinary)
+    print(input_in_binary)
 
-    inputInBinary = appendToStart(inputInBinary, 8, "0")
+    input_in_binary = append_to_start(input_in_binary, 8, "0")
     print("4/ ")
-    print(inputInBinary)
+    print(input_in_binary)
 
-    inputInBinaryString = arrayToString(inputInBinary)
+    input_in_binary_string = array_to_string(input_in_binary)
     print("5/ ")
-    print(inputInBinaryString)
+    print(input_in_binary_string)
 
-    inputInByteArray = splitStringAtSize(inputInBinaryString, 6)
+    input_in_byte_array = split_string_at_size(input_in_binary_string, 6)
     print("6/ ")
-    print(inputInByteArray)
+    print(input_in_byte_array)
 
-    inputInByteArrayFormat = appendToEnd(inputInByteArray, 6, "0")
+    input_in_byte_array_format = append_to_end(input_in_byte_array, 6, "0")
     print("7/ ")
-    print(inputInByteArrayFormat)
+    print(input_in_byte_array_format)
 
-    inputInDecimalArray = convertBinaryToDecimal(inputInByteArrayFormat)
+    input_in_decimal_array = convert_binary_to_decimal(input_in_byte_array_format)
     print("8/ ")
-    print(inputInDecimalArray)
+    print(input_in_decimal_array)
 
-    inputInBase64Array = decimalArrayTo64(inputInDecimalArray)
+    input_in_base64_array = decimal_array_to_64(input_in_decimal_array)
     print("9/ ")
-    print(inputInBase64Array)
+    print(input_in_base64_array)
 
-    inputInBase64String = arrayToString(inputInBase64Array)
+    input_in_base64_string = array_to_string(input_in_base64_array)
     print("10/ ")
-    print(inputInBase64String)
+    print(input_in_base64_string)
 
-    result = formatToMultiple(inputInBase64String, 4, "=")
+    result = format_to_multiple(input_in_base64_string, 4, "=")
     print("11/ ")
     print(result)
     return result
@@ -61,35 +61,35 @@ def string_to_array(string):
     return list(string)
 
 
-def arrayToString(array):
+def array_to_string(array):
     """exo5&10 tranform array to string"""
     return ''.join(array)
 
 
-def appendToEnd(array, length, charToAdd):
+def append_to_end(array, length, char_to_add):
     """exo7 & 11 append char to the end of string while string's length inferior at length"""
     for i in range(len(array)):
-        array[i] = array[i] + charToAdd * (length - len(array[i]))
+        array[i] = array[i] + char_to_add * (length - len(array[i]))
     return array
 
 
-def appendToStart(array, length, charToAdd):
+def append_to_start(array, length, char_to_add):
     """exo7 & 11 append char to the start of string while string's length inferior at length"""
     for i in range(len(array)):
-        array[i] = charToAdd * (length - len(array[i])) + array[i]
+        array[i] = char_to_add * (length - len(array[i])) + array[i]
     return array
 
 
-def formatToMultiple(string, multiple, charToAdd):
+def format_to_multiple(string, multiple, char_to_add):
     """exo7 & 11 append char to the start of string while string's length inferior at length"""
     while len(string) % multiple != 0:
-        string = string + charToAdd
+        string = string + char_to_add
     return string
 
 
-def decimalArrayTo64(arr):
+def decimal_array_to_64(arr):
     """exo9  convert decimal To base64"""
-    convertTable = {"0": "A", "16": "Q", "32": "g", "48": "w",
+    convert_table = {"0": "A", "16": "Q", "32": "g", "48": "w",
                     "1": "B", "17": "R", "33": "h", "49": "x",
                     "2": "C", "18": "S", "34": "i", "50": "y",
                     "3": "D", "19": "T", "35": "j", "51": "z",
@@ -106,14 +106,14 @@ def decimalArrayTo64(arr):
                     "14": "O", "30": "e", "46": "u", "62": "+",
                     "15": "P", "31": "f", "47": "v", "63": "/"}
     for i in range(len(arr)):
-        arr[i] = convertTable.get(str(arr[i]))
+        arr[i] = convert_table.get(str(arr[i]))
     return arr
 
 
 binary_table = ['1000001', '1000010', '1000011', '1000100', '1000101']
 
 
-def convertASCIItoBinary(array):
+def convert_ascii_to_binary(array):
     """exo3 TODO fix ça """
     for i in range(len(array)):
         binary = bin(array[i])
@@ -136,7 +136,7 @@ def sorting(array):
     return array
 
 
-def convertBinaryToDecimal(numbers_table):
+def convert_binary_to_decimal(numbers_table):
     """exo8  convert binary element of an array to decimal """
     decimale_table = []
     for binary in numbers_table:
@@ -150,16 +150,18 @@ def convertBinaryToDecimal(numbers_table):
     return decimale_table
 
 
-def convertToASCII(array):
+def convert_to_ascii(array):
     """exo2 convert each element of array to ASCII """
     for i in range(len(array)):
         array[i] = ord(array[i])
     return array
 
 
-def splitStringAtSize(string, size):
+def split_string_at_size(string, size):
+    """exo6 split string at size"""
     return [string[i:i + size] for i in range(0, len(string), size)]
 
 
 if __name__ == '__main__':
-    convert_base_64("ABCDE")
+    input_user = input("Donnez une chaine de caractere : ")
+    convert_base_64(input_user)
