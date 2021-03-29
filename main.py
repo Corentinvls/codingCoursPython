@@ -4,21 +4,59 @@ Python Docstring
 """
 
 
-def main():
+def convert_base_64(inputUser):
     """The main
     """
 
-    arr = stringToArray("blabla")
-    print(arr)
-    base = decimalTo64([10, 30, 23, 45])
-    print(base)
-    norm = normalizeString(arr[-1], 6, "0")
-    print(norm)
-    str = arrayToString(arr)
-    print(str)
+    print("tu a donner " + inputUser)
+
+    inputInArray = string_to_array(inputUser)
+    print("1/ ")
+    print(inputInArray)
+
+    inputInASCII = convertToASCII(inputInArray)
+    print("2/ ")
+    print(inputInASCII)
+
+    inputInBinary = convertASCIItoBinary(inputInASCII)
+    print("3/ ")
+    print(inputInBinary)
+
+    inputInBinary = appendToStart(inputInBinary, 8, "0")
+    print("4/ ")
+    print(inputInBinary)
+
+    inputInBinaryString = arrayToString(inputInBinary)
+    print("5/ ")
+    print(inputInBinaryString)
+
+    inputInByteArray = splitStringAtSize(inputInBinaryString, 6)
+    print("6/ ")
+    print(inputInByteArray)
+
+    inputInByteArrayFormat = appendToEnd(inputInByteArray, 6, "0")
+    print("7/ ")
+    print(inputInByteArrayFormat)
+
+    inputInDecimalArray = convertBinaryToDecimal(inputInByteArrayFormat)
+    print("8/ ")
+    print(inputInDecimalArray)
+
+    inputInBase64Array = decimalArrayTo64(inputInDecimalArray)
+    print("9/ ")
+    print(inputInBase64Array)
+
+    inputInBase64String = arrayToString(inputInBase64Array)
+    print("10/ ")
+    print(inputInBase64String)
+
+    result = formatToMultiple(inputInBase64String, 4, "=")
+    print("11/ ")
+    print(result)
+    return result
 
 
-def stringToArray(string):
+def string_to_array(string):
     """exo1 tranform string in array of characters"""
     return list(string)
 
@@ -28,13 +66,28 @@ def arrayToString(array):
     return ''.join(array)
 
 
-def normalizeString(string, length, charToAdd):
+def appendToEnd(array, length, charToAdd):
     """exo7 & 11 append char to the end of string while string's length inferior at length"""
-    string = string + charToAdd * (length - len(string))
+    for i in range(len(array)):
+        array[i] = array[i] + charToAdd * (length - len(array[i]))
+    return array
+
+
+def appendToStart(array, length, charToAdd):
+    """exo7 & 11 append char to the start of string while string's length inferior at length"""
+    for i in range(len(array)):
+        array[i] = charToAdd * (length - len(array[i])) + array[i]
+    return array
+
+
+def formatToMultiple(string, multiple, charToAdd):
+    """exo7 & 11 append char to the start of string while string's length inferior at length"""
+    while len(string) % multiple != 0:
+        string = string + charToAdd
     return string
 
 
-def decimalTo64(arr):
+def decimalArrayTo64(arr):
     """exo9  convert decimal To base64"""
     convertTable = {"0": "A", "16": "Q", "32": "g", "48": "w",
                     "1": "B", "17": "R", "33": "h", "49": "x",
@@ -60,19 +113,31 @@ def decimalTo64(arr):
 binary_table = ['1000001', '1000010', '1000011', '1000100', '1000101']
 
 
-def convertASCIItoBinary(binary_table):
-    """exo3 """
-    decimal = 0
-    for element in binary_table:
-        decimal = decimal * 2 + int(element)
-        print(f"The decimal value is: {decimal}")
+def convertASCIItoBinary(array):
+    """exo3 TODO fix ça """
+    for i in range(len(array)):
+        binary = bin(array[i])
+        array[i] = "".join(binary[2:])
+    return array
 
 
-numbers_table = ['010000','010100','001001','000011','010001','000100','010100']
+numbers_table = [16, 20, 9, 3, 17, 4, 20]
+
+
+def sorting(array):
+    """exo bonus"""
+    for i in range(1, len(array)):
+        temp = array[i]
+        j = i - 1
+        while j >= 0 and array[j] > temp:
+            array[j + 1] = array[j]
+            j -= 1
+        array[j + 1] = temp
+    return array
 
 
 def convertBinaryToDecimal(numbers_table):
-    """exo8  """
+    """exo8  convert binary element of an array to decimal """
     decimale_table = []
     for binary in numbers_table:
         int_val, i, n = 0, 0, 0
@@ -84,5 +149,17 @@ def convertBinaryToDecimal(numbers_table):
         decimale_table.append(int_val)
     return decimale_table
 
+
+def convertToASCII(array):
+    """exo2 convert each element of array to ASCII """
+    for i in range(len(array)):
+        array[i] = ord(array[i])
+    return array
+
+
+def splitStringAtSize(string, size):
+    return [string[i:i + size] for i in range(0, len(string), size)]
+
+
 if __name__ == '__main__':
-    convertBinaryToDecimal(numbers_table)
+    convert_base_64("ABCDE")
