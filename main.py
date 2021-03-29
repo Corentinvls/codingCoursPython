@@ -61,19 +61,35 @@ def base_64_to_ascii(string):
     print("tu a donner " + string)
 
     string = remove_useless_char(string, "=")
+    print('1/ ')
+    print(string)
+
     base_64_array = string_to_array(string)
+    print('2/ ')
+    print(base_64_array)
     decimal_array = array_base_64_to_decimal(base_64_array)
     bin_array = decimal_to_binary(decimal_array)
+
     for i in range(len(bin_array)):
         bin_array[i] = remove_useless_char(bin_array[i], "b")
     bin_array = append_to_start(bin_array, 6, "0")
-    bin = array_to_string(bin_array)
-    byte = split_string_at_size(bin, 8)
+    print('3/ ')
+    print(bin_array)
+
+    binary = array_to_string(bin_array)
+    print('4/ ')
+    print(binary)
+
+    byte = split_string_at_size(binary, 8)
     if len(byte[-1]): byte.pop(-1)
+    print('5/ ')
+    print(byte)
+
     ascci = convert_binary_to_decimal(byte)
     for i in range(len(ascci)):
         ascci[i] = convert_ascii_to_char(ascci[i])
     ascci = array_to_string(ascci)
+    print('6/ ')
     print(ascci)
 
     return ascci
@@ -224,4 +240,7 @@ def remove_useless_char(string, char):
 
 # input_user = input("Donnez une chaine de caractere : ")
 # ascii_to_base_64(input_user)
+
+ascii_to_base_64("ABCDE")
+print('\n\n')
 base_64_to_ascii("QUJDREU=")
