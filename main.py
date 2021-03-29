@@ -61,39 +61,28 @@ binary_table = ['1000001', '1000010', '1000011', '1000100', '1000101']
 
 
 def convertASCIItoBinary(binary_table):
-    """exo3 TODO fix ça """
+    """exo3 """
     decimal = 0
     for element in binary_table:
         decimal = decimal * 2 + int(element)
         print(f"The decimal value is: {decimal}")
 
 
-numbers_table = [16, 20, 9, 3, 17, 4, 20]
+numbers_table = ['010000','010100','001001','000011','010001','000100','010100']
 
 
 def convertBinaryToDecimal(numbers_table):
-    """exo8 TODO fix ça """
-    new_table = []
-    for number in numbers_table:
-        new_table.append(float(number))
-    print(f'number table {new_table}')
-
-
-def exo2():
-    mytab = [65, 66, 67, 68, 69]
-    for i in mytab:
-        print(chr(i))
-
-
-def exo6():
-    mylist = '0100000101000010010000110100010001000101'
-    # for i in mylist.split():
-    #     print(list(i))
-    length = len(mylist)
-    split = length//6
-    result = mylist[:split]
-    print(result)
-
+    """exo8  """
+    decimale_table = []
+    for binary in numbers_table:
+        int_val, i, n = 0, 0, 0
+        while (binary != 0):
+            a = int(binary) % 10
+            int_val = int_val + a * pow(2, i)
+            binary = int(binary) // 10
+            i += 1
+        decimale_table.append(int_val)
+    return decimale_table
 
 if __name__ == '__main__':
-    exo6()
+    convertBinaryToDecimal(numbers_table)
