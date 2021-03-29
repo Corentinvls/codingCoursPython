@@ -67,15 +67,16 @@ def base_64_to_ascii(string):
     for i in range(len(bin_array)):
         bin_array[i] = remove_useless_char(bin_array[i], "b")
     bin_array = append_to_start(bin_array, 6, "0")
-    print(bin_array)
+    bin = array_to_string(bin_array)
+    byte = split_string_at_size(bin, 8)
+    if len(byte[-1]): byte.pop(-1)
+    ascci = convert_binary_to_decimal(byte)
+    for i in range(len(ascci)):
+        ascci[i] = convert_ascii_to_char(ascci[i])
+    ascci = array_to_string(ascci)
+    print(ascci)
 
-    # on convertie en string // array_to_string(array):
-    # ~on découpe en block de 8 // split_string_at_size(string, 8):
-    # ~on rempli le dernier par la gauche avec des zeo jusqua ce qu'il fasse 0 ref la ligne d'en dessous//append_to_start(array, 8, "0"):
-    # ensuite on converti en ascii // binary_to_decimal
-    # et on converti en char // ?
-    # puis on converti ce tableau en string // array_to_string(array):
-    # on return
+    return ascci
 
 
 def convert_ascii_to_char(ascii):
