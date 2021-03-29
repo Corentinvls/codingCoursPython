@@ -59,19 +59,27 @@ def base_64_to_ascii(string):
     """Convert base64 to ascii
     """
     print("tu a donner " + string)
+
     string = remove_useless_char(string, "=")
     base_64_array = string_to_array(string)
-    decimal_array=array_base_64_to_decimal(base_64_array)
-    print(decimal_array)
-    #on convertie en tableau de binaire// ?
-    #on convertie en string // array_to_string(array):
-    #~on découpe en block de 8 // split_string_at_size(string, 8):
-    #~on rempli le dernier par la gauche avec des zeo jusqua ce qu'il fasse 0 ref la ligne d'en dessous//append_to_start(array, 8, "0"):
-    #ensuite on converti en ascii // ?
-    #et on converti en char // ?
-    #puis on converti ce tableau en string // array_to_string(array):
-    #on return
+    decimal_array = array_base_64_to_decimal(base_64_array)
+    bin_array = decimal_to_binary(decimal_array)
+    for i in range(len(bin_array)):
+        bin_array[i] = remove_useless_char(bin_array[i], "b")
+    bin_array = append_to_start(bin_array, 6, "0")
+    print(bin_array)
 
+    # on convertie en string // array_to_string(array):
+    # ~on découpe en block de 8 // split_string_at_size(string, 8):
+    # ~on rempli le dernier par la gauche avec des zeo jusqua ce qu'il fasse 0 ref la ligne d'en dessous//append_to_start(array, 8, "0"):
+    # ensuite on converti en ascii // binary_to_decimal
+    # et on converti en char // ?
+    # puis on converti ce tableau en string // array_to_string(array):
+    # on return
+
+
+def convert_ascii_to_char(ascii):
+    return chr(ascii)
 
 
 def string_to_array(string):
@@ -152,7 +160,11 @@ def array_base_64_to_decimal(arr):
     return arr
 
 
-binary_table = ['1000001', '1000010', '1000011', '1000100', '1000101']
+def decimal_to_binary(arr):
+    """exo9  convert base64 To decimal"""
+    for i in range(len(arr)):
+        arr[i] = bin(int(arr[i]))
+    return arr
 
 
 def convert_ascii_to_binary(array):
